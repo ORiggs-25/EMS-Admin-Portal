@@ -30,7 +30,6 @@ def main():
 # --------------------------------------------------------------------------------------------------------------------
 
 
-
 #-----following code pertains to main user input window---------------------------------------------------------------
     # creating object from Tkinter module
     root = tk.Tk()
@@ -83,9 +82,10 @@ def main():
 
     create_button_window = my_canvas.create_window(550, 550, height=35, anchor="nw", window=create_button)
 
-
     root.mainloop()
 
 
 if __name__ == '__main__':
     main()
+
+
