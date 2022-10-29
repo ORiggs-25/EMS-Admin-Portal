@@ -50,33 +50,34 @@ def main():
 
     # create_text function from tkinter will display text onto GUI
     my_canvas.create_text(575, 50, text="Create a new Employee",font=("Helvetica", 21),fill="white")
-    my_canvas.create_text(300, 140, text="Firstname", font=("Helvetica", 16), fill="white")
-    my_canvas.create_text(300, 190, text="Lastname", font=("Helvetica", 16), fill="white")
-    my_canvas.create_text(300, 240, text="DOB", font=("Helvetica", 16), fill="white")
-    my_canvas.create_text(300, 290, text="Email", font=("Helvetica", 16), fill="white")
-    my_canvas.create_text(300, 340, text="Phone", font=("Helvetica", 16), fill="white")
-    my_canvas.create_text(300, 390, text="Position", font=("Helvetica", 16), fill="white")
-    my_canvas.create_text(300, 440, text="Salary", font=("Helvetica", 16), fill="white")
+    my_canvas.create_text(300, 140, text="First Name", font=("Helvetica", 16), fill="white")
+    my_canvas.create_text(300, 190, text="Last Name", font=("Helvetica", 16), fill="white")
+    my_canvas.create_text(300, 240, text="Email", font=("Helvetica", 16), fill="white")
+    my_canvas.create_text(300, 290, text="DOB", font=("Helvetica", 16), fill="white")
+    my_canvas.create_text(300, 330, text="Phone", font=("Helvetica", 16), fill="white")
+    my_canvas.create_text(300, 380, text="Position", font=("Helvetica", 16), fill="white")
+    my_canvas.create_text(300, 430, text="Hour Pay", font=("Helvetica", 16), fill="white")
 
     # create Entry text boxes
     first_entry = tk.Entry(my_canvas, font=("Helvetica", 12), width=50, bg="white", borderwidth=2)
     last_entry = tk.Entry(my_canvas, font=("Helvetica", 12), width=50, bg="white", borderwidth=2)
-    dob_entry = tk.Entry(my_canvas, font=("Helvetica", 12), width=50, bg="white", borderwidth=2)
     email_entry = tk.Entry(my_canvas, font=("Helvetica", 12), width=50, bg="white", borderwidth=2)
+    dob_entry = tk.Entry(my_canvas, font=("Helvetica", 12), width=50, bg="white", borderwidth=2)
     phone_entry = tk.Entry(my_canvas, font=("Helvetica", 12), width=50, bg="white", borderwidth=2)
     position_entry = tk.Entry(my_canvas, font=("Helvetica", 12), width=50, bg="white", borderwidth=2)
     salary_entry = tk.Entry(my_canvas, font=("Helvetica", 12), width=50, bg="white", borderwidth=2)
 
-    first_entry_window = my_canvas.create_window(375, 125, anchor="nw", window=first_entry)
-    last_entry_window = my_canvas.create_window(375, 175, anchor="nw", window=last_entry)
-    dob_entry_window = my_canvas.create_window(375, 225, anchor="nw", window=dob_entry)
-    email_entry_window = my_canvas.create_window(375, 275, anchor="nw", window=email_entry)
-    phone_entry_window = my_canvas.create_window(375, 325, anchor="nw", window=phone_entry)
-    position_entry_window = my_canvas.create_window(375, 375, anchor="nw", window=position_entry)
-    salary_entry_window = my_canvas.create_window(375, 425, anchor="nw", window=salary_entry)
+    first_entry_window = my_canvas.create_window(375, 125, anchor="nw", window=first_entry, command = getFirstName(first_entry))
+    last_entry_window = my_canvas.create_window(375, 175, anchor="nw", window=last_entry, command = getLastname(last_entry))
+    email_entry_window = my_canvas.create_window(375, 225, anchor="nw", window=email_entry, command = getEmail(email_entry))
+    dob_entry_window = my_canvas.create_window(375, 275, anchor="nw", window=dob_entry, command = getDOB(dob_entry))
+    phone_entry_window = my_canvas.create_window(375, 325, anchor="nw", window=phone_entry, command = getPhone(phone_entry))
+    position_entry_window = my_canvas.create_window(375, 375, anchor="nw", window=position_entry, command = getPosition(position_entry))
+    salary_entry_window = my_canvas.create_window(375, 425, anchor="nw", window=salary_entry, command = getSalary(salary_entry))
 
 
     # We used the Button function in Tkinter which will call the function once clicked
+    # Once user hit save, the system validates input and check whether account exists or not.
     create_button = tk.Button(root, text="Save", activeforeground='white', font=("Helvetica", 15), \
                               width=15, height=20, borderwidth=2, command=lambda: getSalary(salary_entry))
 
