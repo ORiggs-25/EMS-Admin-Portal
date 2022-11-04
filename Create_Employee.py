@@ -4,8 +4,8 @@ import tkinter.font as font
 
 
 def main():
-
-#------ get functions will call get user's input, creates a new object------------------------------------------------
+    # ------ get functions will call get user's input, creates a new
+    # object------------------------------------------------
     def getFirstName(first):
         # user input  is saved into variables
         first = first_entry.get()
@@ -23,15 +23,15 @@ def main():
         phone = phone_entry.get()
 
     def getPosition(jobPosition):
-        jobPosition = position_entry.get()
+        position_entry.get()
 
     def getSalary(salary):
         salary = salary_entry.get()
-# --------------------------------------------------------------------------------------------------------------------
 
+    # --------------------------------------------------------------------------------------------------------------------
 
-#-----following code pertains to main user input window---------------------------------------------------------------
-    # creating object from Tkinter module
+    # -----following code pertains to main user input
+    # window--------------------------------------------------------------- creating object from Tkinter module
     root = tk.Tk()
     # renames the title of the window
     root.title("Admin Portal")
@@ -49,7 +49,7 @@ def main():
     my_canvas.create_image(0, 0, image=bg, anchor="nw")
 
     # create_text function from tkinter will display text onto GUI
-    my_canvas.create_text(575, 50, text="Create a new Employee",font=("Helvetica", 21),fill="white")
+    my_canvas.create_text(575, 50, text="Create a new Employee", font=("Helvetica", 21), fill="white")
     my_canvas.create_text(300, 140, text="Firstname", font=("Helvetica", 16), fill="white")
     my_canvas.create_text(300, 190, text="Lastname", font=("Helvetica", 16), fill="white")
     my_canvas.create_text(300, 240, text="DOB", font=("Helvetica", 16), fill="white")
@@ -75,9 +75,8 @@ def main():
     position_entry_window = my_canvas.create_window(375, 375, anchor="nw", window=position_entry)
     salary_entry_window = my_canvas.create_window(375, 425, anchor="nw", window=salary_entry)
 
-
     # We used the Button function in Tkinter which will call the function once clicked
-    create_button = tk.Button(root, text="Save", activeforeground='white', font=("Helvetica", 15), \
+    create_button = tk.Button(root, text="Save", activeforeground='white', font=("Helvetica", 15),
                               width=15, height=20, borderwidth=2, command=lambda: getSalary(salary_entry))
 
     create_button_window = my_canvas.create_window(550, 550, height=35, anchor="nw", window=create_button)
@@ -87,5 +86,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
