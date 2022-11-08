@@ -10,6 +10,10 @@ from PIL import ImageTk  # Display background
 import tkinter.font as font
 
 
+def viewSpecificEmployee():
+    pass
+
+
 def viewAllEmployees():
     global lastN, birthday, status, address, id, email, phone, firstN, roleId
     headers = {
@@ -34,7 +38,7 @@ def viewAllEmployees():
         request = requests.get("https://uhwxroslh0.execute-api.us-east-1.amazonaws.com/dev/employees")
         employeesFromResponse = request.json()["Items"]
         x = -100
-        y = 200
+        y = 30
         for emp in employeesFromResponse:
             if x > 1000:
                 x = -100
@@ -48,29 +52,37 @@ def viewAllEmployees():
             phone = emp["phone"]
             firstN = emp["firstName"]
             roleId = emp["roleID"]
-            x += 250
+            create_button = tk.Button(root, text="View", activeforeground="blue", font=("Helvetica", 10),
+                                      width=15, height=20, borderwidth=2, command=lambda: viewSpecificEmployee())
 
-            for theEmp in range(9):
+            my_canvas.create_window(x + 100, y + 20, height=30, anchor="nw", window=create_button)
+            x += 150
 
-                if theEmp == 1:
+            for theEmp in range(2):
+
+                if theEmp == 0:
                     print("debug")
                     my_canvas.create_text(x, y, text="Last Name: " + lastN, font=("Helvetica", 10), fill="black")
+                    """
                 elif theEmp == 2:
-                    my_canvas.create_text(x, y-20, text="Birthday: " + birthday, font=("Helvetica", 10), fill="black")
+                    my_canvas.create_text(x, y - 20, text="Birthday: " + birthday, font=("Helvetica", 10), fill="black")
                 elif theEmp == 3:
-                    my_canvas.create_text(x, y-40, text="Status : " + status, font=("Helvetica", 10), fill="black")
+                    my_canvas.create_text(x, y - 40, text="Status : " + status, font=("Helvetica", 10), fill="black")
                 elif theEmp == 4:
-                    my_canvas.create_text(x, y-60, text="Address: " + address, font=("Helvetica", 10), fill="black")
+                    my_canvas.create_text(x, y - 60, text="Address: " + address, font=("Helvetica", 10), fill="black")
                 elif theEmp == 5:
-                    my_canvas.create_text(x, y-80, text="ID: " + str(id), font=("Helvetica", 10), fill="black")
+                    my_canvas.create_text(x, y - 80, text="ID: " + str(id), font=("Helvetica", 10), fill="black")
                 elif theEmp == 6:
-                    my_canvas.create_text(x, y-100, text="Email: " + email, font=("Helvetica", 10), fill="black")
+                    my_canvas.create_text(x, y - 100, text="Email: " + email, font=("Helvetica", 10), fill="black")
                 elif theEmp == 7:
-                    my_canvas.create_text(x, y-120, text="Phone: " + phone, font=("Helvetica", 10), fill="black")
-                elif theEmp == 8:
-                    my_canvas.create_text(x, y-140, text="First Name: " + firstN, font=("Helvetica", 10), fill="black")
-                elif theEmp == 9:
-                    my_canvas.create_text(x, y-160, text="Role ID: " + str(roleId), font=("Helvetica", 10), fill="black")
+                    my_canvas.create_text(x, y - 120, text="Phone: " + phone, font=("Helvetica", 10), fill="black")
+                    """
+                elif theEmp == 1:
+                    my_canvas.create_text(x, y - 10, text="First Name: " + firstN, font=("Helvetica", 10),
+                                          fill="black")
+            # elif theEmp == 9:
+            #  my_canvas.create_text(x, y - 160, text="Role ID: " + str(roleId), font=("Helvetica", 10),
+            #                        fill="black")
     except requests.exceptions.HTTPError as err:
         print(err)
 
@@ -114,7 +126,7 @@ def main():
     create_button = tk.Button(root, text="View", activeforeground='white', font=("Helvetica", 30),
                               width=15, height=20, borderwidth=2, command=lambda: viewAllEmployees())
 
-    create_button_window = my_canvas.create_window(450, 200, height=35, anchor="nw", window=create_button)
+    my_canvas.create_window(450, 200, height=35, anchor="nw", window=create_button)
 
     root.mainloop()
 
